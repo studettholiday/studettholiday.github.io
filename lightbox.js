@@ -16,7 +16,7 @@ ov.appendChild(big);ov.appendChild(prev);ov.appendChild(next);ov.appendChild(clo
 document.body.appendChild(ov);
 function show(i){idx=(i+imgs.length)%imgs.length;big.src=imgs[idx].src;cnt.textContent=(idx+1)+' / '+imgs.length;ov.style.display='flex'}
 function hide(){ov.style.display='none'}
-imgs.forEach(function(im,i){im.style.cursor='zoom-in';im.addEventListener('click',function(){show(i)})});
+imgs.forEach(function(im,i){im.style.cursor='zoom-in';var t=im.closest('a')||im;t.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();show(i)})});
 prev.onclick=function(e){e.stopPropagation();show(idx-1)};
 next.onclick=function(e){e.stopPropagation();show(idx+1)};
 close.onclick=hide;
